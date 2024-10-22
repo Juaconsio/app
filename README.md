@@ -1,24 +1,4 @@
-# README
+# PRUEBA TÉCNICA MAKANA
+El desarrollo de la aplicación comenzó con la configuración del proyecto en Rails, donde se definieron los modelos que se iban a utilizar. Posteriormente, generé las tablas correspondientes y aproveché las seed para leer los archivos CSV y crear las instancias en la base de datos.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Para la vista del dashboard, utilicé Tailwind CSS para el diseño y Chartkick para la representación gráfica de los datos. Desde el controlador de Dashboard, realicé las consultas necesarias para proporcionar gráficos que considero que brindarán información valiosa al cliente sobre las sesiones de kinesiología.
