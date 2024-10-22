@@ -1,0 +1,110 @@
+
+ <% animation = {
+    animation: {
+      duration: 1000,
+      easing: 'easeOutBounce'
+    },
+    scales: {
+      xAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  }
+  %>
+<div class= "m-5">
+  <div class="mx-auto">
+    <img src="<%= asset_path('LOGO MAKANA.webp') %>" alt="Logo Makana" class="mx-auto">
+    <p class="mx-auto mt-2 text-balance text-center text-4xl font-semibold tracking-tight text-makana">Dashboard</p>
+    <p class="mx-auto mt-2 text-center text-makana-blue shadow-lg shadow-makana/50">
+      Aquí puedes encontrar los principales indicadores de las sesiones de kinesioterapia de los colaboradores
+      </p>
+
+    <div class="m-5 grid gap-4 lg:grid-cols-3 lg:grid-rows-2">
+      <div class="relative lg:row-span-2 px-5">
+        <div class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem] shadow-lg shadow-makana/50"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
+
+          <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+            <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950  text-center">Registros de entrada</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 text-center"> Promedio de los indicadores de entrada </p>
+          </div>
+
+          <div>
+            <%= bar_chart @register_ins_status_average, min: 0, max:5, library: animation %>
+          </div>
+
+          <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
+              <b>Fatiga:</b> Sensación de agotamiento físico y mental que afecta el rendimiento laboral y la recuperación post-jornada.
+              <br>
+              <br>
+              <b>Dolor:</b> Molestias físicas, musculares o articulares, que surgen durante o después del trabajo y pueden indicar posibles lesiones.
+              <br>
+              <br>
+              <b>Sentir general:</b> Percepción global del bienestar físico y emocional, reflejando energía, ánimo y capacidad física en conjunto.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"></div>
+      </div>
+      <div class="relative max-lg:row-start-1 px-5">
+        <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem] shadow-lg shadow-makana/50"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
+          <div class="px-8 pt-8 sm:px-10 sm:pt-10">
+            <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 text-center">Atenciones</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 text-center"> Frecuencia de las sesiones según día de la semana</p>
+          </div>
+
+          <div>
+            <%= column_chart @attentions_frequency, library: animation %>
+          </div>
+
+        </div>
+        <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem] "></div>
+      </div>
+      <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2 px-5">
+        <div class="absolute inset-px rounded-lg bg-white shadow-lg shadow-makana/50"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]">
+          <div class="px-8 pt-8 sm:px-10 sm:pt-10">
+            <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 text-center">Protocolos</p>
+                <p class="mt-2 max-w-lg text-sm/6 text-gray-600 text-center"> Frecuencia de las terapias más utlizadas</p>
+          </div>
+          <div class="flex flex-1 items-center [container-type:inline-size] max-lg:py-6 lg:pb-2">
+            <%= column_chart @protocol_frequency, library: animation %>
+          </div>
+        </div>
+        <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"></div>
+      </div>
+      <div class="relative lg:row-span-2 px-5">
+        <div class="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem] shadow-lg shadow-makana/50"></div>
+        <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
+          <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+            <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 text-center">Registro de salida</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 text-center"> Promedio de los indicadores de salida </p>
+
+          <div>
+            <%= bar_chart @register_outs_status_average, min: 0, max:5, library: animation %>
+          </div>        
+        </div>
+          <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
+            <p class="mt-2 text-lg/7 font-medium tracking-tight text-gray-950 text-center">Distribución de terapias según el día</p>
+            <p class="mt-2 max-w-lg text-sm/6 text-gray-600 text-center"> Protocolos más utilizados según el dia de la semana que se realizan  </p>
+
+          <div>
+          <div>
+            <%= column_chart @chart_data.map { |item| { name: item[:name], data: item[:data] } }, stacked: false, labels: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"], legend: "bottom", library: animation %>
+          </div>  
+        <div class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
+      </div>
+    </div>
+  </div>
+</div>
